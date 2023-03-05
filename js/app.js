@@ -8,10 +8,21 @@ const loadTemperature = (city) => {
     .then((res) => res.json())
     .then((data) => displayTemperature(data));
 };
+
+// common function for id
+const setInnerTextById = (id, text) => {
+  const temperature = document.getElementById(id);
+  temperature.innerText = text;
+};
+
 const displayTemperature = (data) => {
-  console.log(data.main.temp);
-  const temperature = document.getElementById("temperature");
-  temperature.innerText = data.main.temp;
+  // console.log(data.main.temp);
+  // const temperature = document.getElementById("temperature");
+  // temperature.innerText = data.main.temp;
+  setInnerTextById("temperature", data.main.temp);
+  setInnerTextById("weather-condition", data.weather[0].main);
+
+  console.log(data.weather[0].main);
 };
 
 // event listener of search button
